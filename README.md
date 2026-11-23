@@ -137,12 +137,7 @@ bru run --env local
 ```
 
 ## Vídeo de demonstração — AS
-<!-- Cole aqui o link público do vídeo da AS -->
-**[Cole aqui o link do vídeo da AS]**
-
-## Vídeo de demonstração — AP2
-<!-- Cole aqui o link público do vídeo -->
-**[Link do vídeo]**
+https://drive.google.com/file/d/1eVmwwhvkexVxbTaiYPIY4CVgqeO8ldr4/view?usp=drive_link
 
 ## Observações
 - Não versionar `bin/`, `obj/` nem o arquivo `cafes.db` (já listados no `.gitignore`).
