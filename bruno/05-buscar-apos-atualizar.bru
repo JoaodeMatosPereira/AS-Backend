@@ -1,0 +1,23 @@
+meta {
+  name: 05 - Buscar após atualizar (confirma o PUT)
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/api/cafes/{{cafeId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+tests {
+  test("o banco guardou os dados atualizados", function() {
+    expect(res.body.marca).to.equal("Pilão");
+    expect(res.body.volume).to.equal(250);
+    expect(res.body.tipo).to.equal("Espresso");
+  });
+}

@@ -1,0 +1,35 @@
+meta {
+  name: 08 - Criar café para testar persistência
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseUrl}}/api/cafes
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "marca": "Três Corações",
+    "volume": 250,
+    "tipo": "Cappuccino"
+  }
+}
+
+script:post-response {
+  // este registro NÃO será excluído: serve para provar a persistência após reiniciar a API
+  bru.setVar("cafeIdPersistencia", res.body.id);
+}
+
+assert {
+  res.status: eq 201
+}
+
+tests {
+  test("devolve o café criado com identificador", function() {
+    expect(res.body.id).to.be.a("number");
+    expect(res.body.marca).to.equal("Três Corações");
+  });
+}

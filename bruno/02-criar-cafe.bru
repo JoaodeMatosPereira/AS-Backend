@@ -1,0 +1,37 @@
+meta {
+  name: 02 - Criar café
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/cafes
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "marca": "Melitta",
+    "volume": 500,
+    "tipo": "Filtrado"
+  }
+}
+
+script:post-response {
+  // guarda o identificador devolvido pela API para as próximas requisições
+  bru.setVar("cafeId", res.body.id);
+}
+
+assert {
+  res.status: eq 201
+}
+
+tests {
+  test("devolve o café criado com identificador", function() {
+    expect(res.body.id).to.be.a("number");
+    expect(res.body.marca).to.equal("Melitta");
+    expect(res.body.volume).to.equal(500);
+    expect(res.body.tipo).to.equal("Filtrado");
+  });
+}

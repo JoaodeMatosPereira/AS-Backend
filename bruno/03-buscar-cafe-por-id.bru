@@ -1,0 +1,24 @@
+meta {
+  name: 03 - Buscar café por id
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/api/cafes/{{cafeId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+tests {
+  test("devolve os mesmos dados criados", function() {
+    expect(res.body.id).to.equal(bru.getVar("cafeId"));
+    expect(res.body.marca).to.equal("Melitta");
+    expect(res.body.volume).to.equal(500);
+    expect(res.body.tipo).to.equal("Filtrado");
+  });
+}

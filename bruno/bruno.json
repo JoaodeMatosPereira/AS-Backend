@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Apicafe",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

@@ -1,0 +1,24 @@
+meta {
+  name: 09 - Consultar o mesmo id após reiniciar a API
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseUrl}}/api/cafes/{{cafeIdPersistencia}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+tests {
+  test("o registro continua no banco", function() {
+    expect(res.body.id).to.equal(bru.getVar("cafeIdPersistencia"));
+    expect(res.body.marca).to.equal("Três Corações");
+    expect(res.body.volume).to.equal(250);
+    expect(res.body.tipo).to.equal("Cappuccino");
+  });
+}

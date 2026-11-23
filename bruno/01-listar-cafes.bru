@@ -1,0 +1,21 @@
+meta {
+  name: 01 - Listar cafés
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/cafes
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+tests {
+  test("retorna uma lista", function() {
+    expect(res.body).to.be.an("array");
+  });
+}

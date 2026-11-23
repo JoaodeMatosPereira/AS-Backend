@@ -1,0 +1,32 @@
+meta {
+  name: 04 - Atualizar café
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/api/cafes/{{cafeId}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "marca": "Pilão",
+    "volume": 250,
+    "tipo": "Espresso"
+  }
+}
+
+assert {
+  res.status: eq 200
+}
+
+tests {
+  test("devolve os dados atualizados", function() {
+    expect(res.body.id).to.equal(bru.getVar("cafeId"));
+    expect(res.body.marca).to.equal("Pilão");
+    expect(res.body.volume).to.equal(250);
+    expect(res.body.tipo).to.equal("Espresso");
+  });
+}
