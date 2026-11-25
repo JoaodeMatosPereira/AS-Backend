@@ -137,7 +137,7 @@ bru run --env local
 ```
 
 ## Vídeo de demonstração — AS
-https://drive.google.com/file/d/1eVmwwhvkexVxbTaiYPIY4CVgqeO8ldr4/view?usp=drive_link
+https://drive.google.com/file/d/1eVmwwhvkexVxbTaiYPIY4CVgqeO8ldr4/view?usp=sharing
 
 ## Observações
 - Não versionar `bin/`, `obj/` nem o arquivo `cafes.db` (já listados no `.gitignore`).
